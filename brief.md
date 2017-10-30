@@ -11,7 +11,7 @@
 * `NIL /= #f`
 * Predicates: `null? pair? string=?`
 * Coercion: `string->list symbol->string`
-* Each symol has only __one__ value
+* Each symbol has only __one__ value
 * No dynamic binding
 * `defun` VS. `define`
 * Real first-class functions:
@@ -43,10 +43,10 @@ TODO
 TODO
 ```
 * Other use cases:
-    * excape from infinite loop
+    * escape from infinite loop
     * exceptions
     * reenter "deep" recursion (good for debugging)
-    * coroutines
+    * co-routines
     * stack of continuations => backtracking
 
 ## Syntax-rules
