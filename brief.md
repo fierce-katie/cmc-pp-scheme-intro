@@ -66,9 +66,23 @@
 
 * Continuations are first-class in Scheme, just like functions (can be saved, revoked, etc.)
 * There's `call/cc` to work with them
-* Example: `product`:
+* Example:
 ```scheme
-TODO
+    (define (product-cc l)
+        (define (reciever cc)
+            (letrec
+                ((product (lambda (l)
+                    (cond
+                        ((null? l) (print "NIL") 1)
+                        ((= 0 (car l)) (cc 0))
+                        (else (print (car l)) (* (car l) (product (cdr l))))
+                    )
+                )))
+                (product l)
+            )
+        )
+        (call/cc reciever)
+    )
 ```
 * Other use cases:
     * escape from infinite loop
