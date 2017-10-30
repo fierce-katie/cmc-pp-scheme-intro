@@ -1,5 +1,5 @@
 (define (product-cc l)
-    (define (reciever cc)
+    (define (receiver cc)
         (letrec
             ((product (lambda (l)
                 (cond
@@ -11,5 +11,5 @@
             (product l)
         )
     )
-    (call/cc reciever)
+    (call/cc receiver)
 )

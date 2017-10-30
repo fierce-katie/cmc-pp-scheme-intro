@@ -1,4 +1,4 @@
-# Introduction to the Scheme programming language
+# Some notes on the Scheme programming language
 
 ## Intro
 * MIT, 1975
@@ -69,7 +69,7 @@
 * Example:
 ```scheme
     (define (product-cc l)
-        (define (reciever cc)
+        (define (receiver cc)
             (letrec
                 ((product (lambda (l)
                     (cond
@@ -81,7 +81,7 @@
                 (product l)
             )
         )
-        (call/cc reciever)
+        (call/cc receiver)
     )
 ```
 * Other use cases:
