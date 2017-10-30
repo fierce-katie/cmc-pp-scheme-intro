@@ -27,9 +27,37 @@
 
 * Continuation is like context that can be represented as function (argument = results of current evaluation)
 * Function can be passed to other function as argument
-* Example: `append` vs `append-cps`:
+* Examples:
 ```scheme
-TODO
+    ; FACTORIAL
+    (define (factorial n)
+        (if (= n 0)
+            1
+            (* n (factorial (- n 1)))
+        )
+    )
+
+    (define (factorial-cps n cc)
+        (if (= n 0)
+            (cc 1)
+            (factorial-cps (- n 1) (lambda (x) (cc (* x n))))
+        )
+    )
+
+    ; APPEND
+    (define (append1 l1 l2)
+        (if (null? l1)
+            l2
+            (cons (car l1) (append1 (cdr l1) l2))
+        )
+    )
+
+    (define (append-cps l1 l2 cc)
+        (if (null? l1)
+            (cc l2)
+            (append-cps (cdr l1) l2 (lambda (x) (cc (cons (car l1) x))))
+        )
+    )
 ```
 * CPS profit: tail recursion => optimization
 * Hard to read and write, compilers can do it automatically (example: ML)
@@ -50,6 +78,7 @@ TODO
     * stack of continuations => backtracking
 
 ## Syntax-rules
+TODO
 
 ## Links
 
