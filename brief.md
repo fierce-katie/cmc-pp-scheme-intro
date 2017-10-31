@@ -92,7 +92,19 @@
     * stack of continuations => backtracking
 
 ## Syntax-rules
-TODO
+  * There's `defmacro` and QQ
+  * Syntax-rules are more powerful
+  * Example (explains pattern language):
+```scheme
+  (define-syntax my-and
+      (syntax-rules ()
+          ((my-and) #t)
+          ((_ x) x)
+          ((_ e1 e2 ...) (if e1 (my-and e2 ...) #f))
+      )
+  )
+```
+  * Can be used to define functions (special forms) that shouldn't evaluate its arguments
 
 ## Links
 
@@ -100,3 +112,5 @@ TODO
 * [CPS (Wikipedia)](https://en.wikipedia.org/wiki/Continuation-passing_style)
 * [Call/cc patterns (PDF, en)](http://repository.readscheme.org/ftp/papers/PLoP2001_dferguson0_1.pdf)
 * [Call/cc patterns (ru)](http://fprog.ru/lib/ferguson-dwight-call-cc-patterns/)
+* [Syntax-rules examples and exercises](http://www.shido.info/lisp/scheme_syntax_e.html)
+* [Macros in Scheme](https://en.wikibooks.org/wiki/Scheme_Programming/Macros)
